@@ -43,4 +43,8 @@ body {
     background: black;
     position: absolute;
     top: 50%;
+    transform-origin: 100%; /* sets the origin of the transformation along the x axis so hands pivot from the right end vs center */
+    transform: rotate(90deg); /*set starting point at 12:00*/
+    transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
 }
