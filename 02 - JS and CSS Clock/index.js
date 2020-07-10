@@ -8,6 +8,7 @@ const setDate = () => {
     const seconds = now.getSeconds(); //gets the seconds from the current date
     const secondsDegrees = ((seconds / 60) * 360) + 90; //have to add 90 to account for offsetting by 90 degreess in style.css
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+    console.log('second', seconds)
     //fixes the weird glitch when the second hand transitions from 60 seconds back to 0 seconds
     //when the hand reaches the end of the 60 seconds and transitions to 0, the degress reduce and the hand makes a reverse anti-clockwise animation to reach 0 degrees
     //this is visible because the transition is set to 0.05s
@@ -22,10 +23,24 @@ const setDate = () => {
     const minutes = now.getMinutes(); //gets the minute from the current date
     const minutesDegrees = ((minutes / 60) * 360) + 90;
     minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+    console.log('min', minutes)
+    if (minutes === 0){
+        minuteHand.classList.add('fast')
+    }
+    if (minutes === 1){
+        minuteHand.classList.remove('fast')
+    }
 
     const hour = now.getHours(); //gets the hour from the current date
     const hourDegrees = ((hour / 12) * 360) + 90;
+    console.log('hour', hour)
     hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    if (hour === 0){
+        hourHand.classList.add('fast')
+    }
+    if (hour === 1){
+        hourHand.classList.remove('fast')
+    }
 }
 
 setInterval(setDate, 1000)
