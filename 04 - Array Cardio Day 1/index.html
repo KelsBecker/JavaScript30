@@ -58,10 +58,14 @@
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-
+    // const category = document.querySelector('.mw-category')
+    // const list = [...category.querySelectorAll('a')] //es6 spread opperator takes every item in an iterable item (node list in this case) and places it in an array
+    // const blvds = list.map(item => item.innerHTML)
+    // const finalList = blvds.filter(blvd => blvd.includes('de'))
+    
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-    const alphabetical = inventors.sort((a,b) => a.last.localeCompare(b.last))
+    const alphabetical = people.sort((a,b) => a.last - b.last)
     console.log('Alphabetical', alphabetical)
 
     // 8. Reduce Exercise
@@ -69,8 +73,8 @@
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
     const instances = data.reduce((obj, item) => {
-      if(!obj[item]) obj[item] = 0;
-      obj[item]++;
+      if(!obj[item]) obj[item] = 0; //if the key/value doesn't exist populate the blank object with the key and value of 0
+      obj[item]++; //update the value everytime the key is present in data
       return obj;
     },{})
 
