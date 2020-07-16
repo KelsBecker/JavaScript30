@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+const pressedKeys = [];
+const secretCode = 'kelz'
+
+window.addEventListener('keyup', (event) => {
+  console.log(event.key)
+  pressedKeys.push(event.key)
+  //start counting from the back of the array, essentially splicing in reverse so it is always removing the first characters in the array.
+  pressedKeys.splice(-secretCode.length -1, pressedKeys.length - secretCode.length)
+  if (pressedKeys.join('').includes(secretCode)){
+    console.log('GIVE ME A UNICORN')
+    cornify_add()
+  }
+  console.log(pressedKeys)
+})
+</script>
+</body>
+</html>
