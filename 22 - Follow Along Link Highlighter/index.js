@@ -10,15 +10,15 @@ const addHighlight = (event) => {
   //could also use this in place of event.target if not using arrow function
   const linkCoordinates = event.target.getBoundingClientRect()
   //allows me to adjust to window scroll
-  const cords = {
+  const coords = {
     height: linkCoordinates.height,
     width: linkCoordinates.width,
     left: linkCoordinates.left + window.scrollX,
     top: linkCoordinates.top + window.scrollY
   }
-  highlight.style.height = `${cords.height}px`
-  highlight.style.width = `${cords.width}px`
-  highlight.style.transform = `translate(${cords.left}px, ${cords.top}px)`
+  highlight.style.height = `${coords.height}px`
+  highlight.style.width = `${coords.width}px`
+  highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`
 }
 
 triggers.forEach(trigger => trigger.addEventListener('mouseenter', addHighlight))
