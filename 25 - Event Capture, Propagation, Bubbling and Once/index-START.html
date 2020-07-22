@@ -9,6 +9,7 @@
   <div class="one">
     <div class="two">
       <div class="three">
+        <button class='button'>Click Me!</button>
       </div>
     </div>
   </div>
@@ -40,8 +41,28 @@
   }
 </style>
 
-<button></button>
+
 <script>
+const divs = document.querySelectorAll('div')
+const button = document.querySelector('button')
+//capture occures from top to bottom, so onClick capture will start at the top and work down frombody, to div1, div2, etc
+//bubbling occurse from bottom to top, if div2 is clicked, bubbles from div2, dive1, body, etc
+function handleClick(event){
+  // stopPropagation() says stop bubbling, will only log the clicked divs classList
+  // event.stopPropagation()
+  //due to event bubbling this will log the classList for the div clicked and any divs wrapped around it.
+  console.log(this.classList.value)
+  // this will only log the cliced elements classList as target specifies the clicked element
+  // vs this represents the parent/outermost element.
+  console.log(event.target.classList.value)
+}
+
+divs.forEach(d => d.addEventListener('click', handleClick))
+
+// adding once will only allow the button event to fire once
+// it essentially unbinds the event listener from the element
+// same as using element.removeEventListener()
+button.addEventListener('click', () => console.log('CLICKED!!'), {once:true})
 
 </script>
 </body>
